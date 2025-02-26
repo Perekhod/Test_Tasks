@@ -1,7 +1,7 @@
-/*
-************** ЗАДАНИЕ **************
-Есть класс CodeGenerator, который умеет генерить код на разных языках.
-Предложите рефакторинг с учетом, что количество языков будет расширяться
+п»ї/*
+************** Р—РђР”РђРќРР• **************
+Р•СЃС‚СЊ РєР»Р°СЃСЃ CodeGenerator, РєРѕС‚РѕСЂС‹Р№ СѓРјРµРµС‚ РіРµРЅРµСЂРёС‚СЊ РєРѕРґ РЅР° СЂР°Р·РЅС‹С… СЏР·С‹РєР°С….
+РџСЂРµРґР»РѕР¶РёС‚Рµ СЂРµС„Р°РєС‚РѕСЂРёРЅРі СЃ СѓС‡РµС‚РѕРј, С‡С‚Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕ СЏР·С‹РєРѕРІ Р±СѓРґРµС‚ СЂР°СЃС€РёСЂСЏС‚СЊСЃСЏ
 */
 
 class CodeGenerator {
@@ -33,12 +33,12 @@ private:
     Lang _language;
 };
 
-/* __________Предложенное решение__________ */
+/* __________РџСЂРµРґР»РѕР¶РµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ__________ */
 #include <iostream>
 #include <memory>
 #include <stdexcept>
 
-/* Базовый класс для генерации кода */
+/* Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РєРѕРґР° */
 class CodeGenerator {
 public:
     virtual ~CodeGenerator () = default;
@@ -46,7 +46,7 @@ public:
     virtual std::string someCodeRelatedThing () = 0;
 };
 
-/* Генерация кода для Java */
+/* Р“РµРЅРµСЂР°С†РёСЏ РєРѕРґР° РґР»СЏ Java */
 class JavaCodeGenerator : public CodeGenerator {
 public:
     std::string generateCode () override {
@@ -58,7 +58,7 @@ public:
     }
 };
 
-/* Генерация кода для C++ */
+/* Р“РµРЅРµСЂР°С†РёСЏ РєРѕРґР° РґР»СЏ C++ */
 class CppCodeGenerator : public CodeGenerator {
 public:
     std::string generateCode () override {
@@ -70,7 +70,7 @@ public:
     }
 };
 
-/* Генерация кода для PHP */
+/* Р“РµРЅРµСЂР°С†РёСЏ РєРѕРґР° РґР»СЏ PHP */
 class PhpCodeGenerator : public CodeGenerator {
 public:
     std::string generateCode () override {
@@ -82,12 +82,12 @@ public:
     }
 };
 
-/* Создание генераторов кода */
+/* РЎРѕР·РґР°РЅРёРµ РіРµРЅРµСЂР°С‚РѕСЂРѕРІ РєРѕРґР° */
 class CodeGeneratorFactory {
 public:
     enum Lang { JAVA, C_PLUS_PLUS, PHP };
 
-    /* Делаем функцию статик, чтобы не создавать объект класса */
+    /* Р”РµР»Р°РµРј С„СѓРЅРєС†РёСЋ СЃС‚Р°С‚РёРє, С‡С‚РѕР±С‹ РЅРµ СЃРѕР·РґР°РІР°С‚СЊ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° */
     static std::unique_ptr<CodeGenerator> createGenerator (Lang language) {
         switch (language) {
             case JAVA:        return std::make_unique<JavaCodeGenerator> ();
